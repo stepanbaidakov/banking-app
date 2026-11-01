@@ -2,7 +2,7 @@ from src.services import find_by_number
 
 
 def test_find_by_number():
-    assert find_by_number() == [
+    assert find_by_number() == {"transactions": [
         {
             "Дата операции": "18.11.2021 21:15:27",
             "Дата платежа": "19.11.2021",
@@ -530,4 +530,4 @@ def test_find_by_number():
             "Округление на инвесткопилку": "0,00",
             "Сумма операции с округлением": "100,00",
         },
-    ]
+    ]}

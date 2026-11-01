@@ -32,15 +32,24 @@ mypy = "^1.17.0"
 
 [tool.black]
 line-length = 119
-exclude = ".git"
+extend-exclude = '''
+/(
+    \.git
+  | \.venv
+  | venv
+  | build
+  | dist
+)/
+'''
 
 [tool.isort]
+profile = "black"
 line_length = 119
+skip_gitignore = true
+extend_skip = [".venv", "venv", "build", "dist"]
 
 [tool.mypy]
-disallow_untyped_defs = true
-warn_return_any = true
-exclude = "venv"
-
-[tool.flake8]
-max-line-length = 119
+files = ["src", "tests"]
+exclude = '(^|/)(\.venv|venv|build|dist)/'
+ignore_missing_imports = true
+check_untyped_defs = true

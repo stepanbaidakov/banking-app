@@ -1,17 +1,15 @@
-import json
 import logging
-import re
-
 import math
 import os
+import re
 from collections import defaultdict
-from datetime import datetime, date, time, timedelta
+from datetime import datetime, time, timedelta
 
 import pandas as pd
 import requests
 from dotenv import load_dotenv
 
-from config import DATA_DIR, LOGS_DIR
+from config import LOGS_DIR
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -31,6 +29,7 @@ get_currency_rates_logger = logging.getLogger("app.views.get_currency_rates")
 get_stock_prices_logger = logging.getLogger("app.views.get_stock_rates")
 
 pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
 
 def transform_date(date_str: str) -> datetime:
     """Transform string date to datetime format"""

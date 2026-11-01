@@ -1,4 +1,3 @@
-import json
 import os
 
 from config import DATA_DIR
@@ -39,7 +38,6 @@ def views_main():
                 except ValueError:
                     print("Wrong Range Type")
 
-
             got_transactions = get_transactions(
                 start_date,
                 end_date,
@@ -49,7 +47,6 @@ def views_main():
             plus, minus = split_transactions(got_transactions)
             expenses_calc = calculate_expenses(minus)
             incomes_calc = calculate_incomes(plus)
-
 
             print("Do you want to get the current currency rates? (yes/no)")
             while True:
