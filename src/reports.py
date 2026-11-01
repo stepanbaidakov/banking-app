@@ -1,9 +1,11 @@
-from datetime import datetime, time
-from dateutil.relativedelta import relativedelta
 import logging
 import os.path
+from datetime import datetime, time
 from typing import Optional
+
 import pandas as pd
+from dateutil.relativedelta import relativedelta
+
 from config import DATA_DIR, LOGS_DIR
 
 log_path = os.path.join(LOGS_DIR, "services.log")
@@ -16,6 +18,7 @@ services_logger.addHandler(file_handler)
 
 def report(func):
     """Accept a function and save its result to a report file."""
+
     def wrapper(*args, **kwargs):
         """Save the report data to a file."""
         result = func(*args, **kwargs)
@@ -34,7 +37,9 @@ def find_spending_by_category(
     date: Optional[str] = None,
 ) -> dict:
     """Return expenses for the specified category for the last three months."""
-    spendings = transactions[(transactions["Категория"] == category) & (transactions["Сумма операции"] < 0)]
+    spendings = transactions[
+        (transactions["Категория"].str.casefold() == category.casefold()) & (transactions["Сумма операции"] < 0)
+    ]
 
     if date is not None:
         end_date = datetime.strptime(date, "%d.%m.%Y")
@@ -64,7 +69,7 @@ def reports_main():
 
     if whether_expenses == "Yes":
         print("To get expenses by category, enter the desired category and optionally specify a date.")
-        category = input("Enter the category to get expenses for: ").capitalize()
+        category = input("Enter the category to get expenses for: ")
         print("Do you want to specify a date? (yes/no)")
         whether_date = input("Enter yes or no: ").capitalize()
 

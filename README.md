@@ -50,7 +50,7 @@ cd course_work_1
 
 ### 2. Install dependencies
 
-If you are using Poetry:
+If you are using Poetry:    
 
 ```bash
 poetry install
@@ -68,26 +68,27 @@ Alternatively, dependencies can be installed using `pip`:
 pip install -r requirements.txt
 ```
 
-### 3. Configure environment variables
+### 3. Obtain an API Keys
 
-Create a `.env` file in the root directory of the project.
+To obtain API tokens, visit the following websites and create an account:
 
-Add your API keys:
+- Currency exchange rates: [APILayer Exchange Rates Data API](https://apilayer.com/marketplace/exchangerates_data-api)
+- Stock prices: [Twelve Data](https://twelvedata.com/)
 
-```env
+### 4. Configure Environment Variables
+
+Use the `.env.sample` file provided in the repository as a template for your local environment configuration.
+
+1. Create a copy of `.env.sample` named `.env`.
+2. Open `.env` and replace the placeholder with your obtained API keys:
+
+```dotenv
 API_KEY_CURRENCIES=your_currency_api_key
 API_KEY_STOCKS=your_stocks_api_key
 ```
 
 The `.env` file should not be committed to the repository. Add it to `.gitignore` to prevent it from being tracked by
 Git.
-
-It is recommended to create a `.env.example` file:
-
-```env
-API_KEY_CURRENCIES=
-API_KEY_STOCKS=
-```
 
 ## Running the Application
 
@@ -127,18 +128,6 @@ To run tests with more detailed output:
 
 ```bash
 pytest -v
-```
-
-To run a specific test file:
-
-```bash
-pytest tests/test_reports.py
-```
-
-To run a specific test:
-
-```bash
-pytest tests/test_reports.py::test_spending_by_category_report -v
 ```
 
 The project also uses `unittest.mock` to mock external API requests, allowing the tests to run without making real HTTP requests.

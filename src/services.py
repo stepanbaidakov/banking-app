@@ -1,9 +1,10 @@
 import logging
 import os
 import re
-import pandas as pd
-from config import DATA_DIR, LOGS_DIR
 
+import pandas as pd
+
+from config import DATA_DIR, LOGS_DIR
 
 log_path = os.path.join(LOGS_DIR, "services.log")
 services_logger = logging.Logger(__name__)
