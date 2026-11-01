@@ -6,14 +6,14 @@ import json
 
 def main():
     """Run the project."""
-    # transactions = views_main()
-    # yield transactions
+    transactions = views_main()
+    yield transactions
 
     spendings_by_category = reports_main()
     yield spendings_by_category
-    #
-    # found_by_number = services_main()
-    # yield found_by_number
+
+    found_by_number = services_main()
+    yield found_by_number
 
 
 for step in main():
